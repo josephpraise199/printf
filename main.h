@@ -1,14 +1,17 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef CUSTOM_PRINTF_H
+#define CUSTOM_PRINTF_H
 
 #include <stdarg.h>
+#include <stddef.h>
 
-// Defining the macro for formatting a string
-#define PRINTF_BUFSIZE 100  // Adjust the buffer size as needed
+// Define a struct for format specifier functions
+typedef struct print_function {
+    char ident;
+    int (*f)(va_list arg);
+} print_function_t;
 
-// Function prototypes
+// Custom printf function
 int custom_printf(const char *format, ...);
-int custom_vsprintf(char *buf, const char *format, va_list args);
 
-#endif // MAIN_H
+#endif // CUSTOM_PRINTF_H
 
